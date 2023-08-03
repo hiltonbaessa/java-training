@@ -1,4 +1,6 @@
-public class ArrayList<T> implements List<T>{
+import java.util.Iterator;
+
+public class ArrayList<T> implements List<T>, Iterable<T> {
     
     private T[] list;
     private int initialSize;
@@ -86,6 +88,9 @@ public class ArrayList<T> implements List<T>{
         return newList;
     }
 
+
+
+
     @Override 
     public String toString() {
         String str = "[ ";
@@ -98,6 +103,34 @@ public class ArrayList<T> implements List<T>{
         return str; 
         
     }
+
+    @Override
+    public Iterator<T> iterator() {
+
+        return new Iterator<T>() {
+            private int currentIndex = 0;
+            @Override
+            public boolean hasNext() {
+                return currentIndex < currentSize;
+            }
+
+            @Override
+            public T next() {
+                if(!hasNext()){
+                    try {
+                        throw new Exception("no Next");
+                    } catch (Exception e) {
+                       
+                        e.printStackTrace();
+                    }
+                }
+                return list[currentIndex++];
+            }
+            
+        };
+    }
+
+    
 
     
 
