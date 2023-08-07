@@ -1,6 +1,7 @@
 public interface List<T> {
 
 
+
     int size();
     boolean isEmpty();
     void add(T element); //add the element at the end of the list
